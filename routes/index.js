@@ -291,12 +291,12 @@ router.post('/recuperarPacotes', (req, res, next) => {
 
 router.post('/apagarPacote', (req, res, next) => {
 
-    var aux = var aux = findUser(res.body);
+    var aux = findUser(res.body);
     var idUser = aux.ID;
 
     var sql = 'DELETE FROM pacotes WHERE IDUsuario = ?;';
 
-    db.run(sql, [idUser], (err) => { ]
+    db.run(sql, [idUser], (err) => { 
         if (err) {
             db.close();
             throw err;
@@ -344,7 +344,7 @@ router.get('/sdestinos', (req, res, next) => {
             } 
         });
         db.close();
-        res.send('status:': true, 'result': true, 'idDestino': destino.location_id, 'idUser': ID);
+        res.send({ "status": true, "result": true, "idDestino": destino.location_id, "idUser": ID });
     }
     else {
         db.run(sql, [destino.location_id, ID, destino.name, idPacote], (err, rows) => {
@@ -354,7 +354,7 @@ router.get('/sdestinos', (req, res, next) => {
             }
         });
         db.close();
-        res.send('status:': true, 'result': true, 'idDestino': destino.location_id, 'idUser': ID);
+        res.send({ "status": true, "result": true, "idDestino": destino.location_id, "idUser": ID });
     }
 });
 
@@ -397,7 +397,7 @@ router.get('/shotel', (req, res, next) => {
         });
     }
     db.close();
-    res.send('status:': true, 'result': true, 'idHotel': hotel.location_id, 'idUser': ID);
+    res.send({ 'status:': true, 'result': true, 'idHotel': hotel.location_id, 'idUser': ID });
 });
 
 /* -----------------------------------------------------------------------\
